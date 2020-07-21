@@ -80,7 +80,7 @@ $(function() {
       // Add pips to the ul element in index.html
       var listContainer = $('#quotes-carousel-pips').find('ul');
       for (var i = lastIndex; i >= 0; i--) {
-        var newPip = $('<li class="pip"></li>');
+        var newPip = $(`<li class="pip carousel-navigation"></li>`);
         $(listContainer).append(newPip);
       }
       updatePips();
@@ -93,8 +93,11 @@ $(function() {
       $('#quotes-carousel-pips').find('.next').removeClass('next');
       var allPips = $('#quotes-carousel-pips').find('.pip');
       $(allPips[prevIndex]).addClass('previous');
+      $(allPips[prevIndex]).attr('tabindex', prevIndex);
       $(allPips[currentIndex]).addClass('current');
+      $(allPips[currentIndex]).attr('tabindex', currentIndex);
       $(allPips[nextIndex]).addClass('next');
+      $(allPips[nextIndex]).attr('tabindex', nextIndex);
     }
   
     function showFromPip(event) {
